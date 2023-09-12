@@ -1,22 +1,32 @@
 package com.springboot.springbootannotations.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import org.springframework.validation.annotation.Validated;
+
 
 import java.time.LocalDate;
 
 
-
+@Valid
+@Validated
 @Entity
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+@NotEmpty
     private String description;
+@NotEmpty
     private String status;
+
+@NotNull
     private LocalDate startDate;
+
+    @NotNull
+
     private LocalDate endDate;
 
     public Task(Long id, String description, String status, LocalDate startDate, LocalDate endDate) {
